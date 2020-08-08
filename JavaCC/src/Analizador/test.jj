@@ -4,7 +4,7 @@ options {
 }
 
 PARSER_BEGIN(test)
-/** Analizador de expresiones aritmeticas sencillas. */
+/** Analizador de cadenas ascendentes. */
 package Analizador; 
 public class test {
 }
