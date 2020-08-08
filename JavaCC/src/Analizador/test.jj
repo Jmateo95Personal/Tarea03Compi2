@@ -40,7 +40,8 @@ void Analizar() :
     }
 }
 
-/** Exprecion ->Primitivo(',' Primitivo)*  */
+/** Exprecion ->Primitivo(',' Primitivo)*  
+*/
 boolean Exprecion() :
 {int a, b; boolean c=true;}
 {
