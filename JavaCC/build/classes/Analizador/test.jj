@@ -1,0 +1,61 @@
+options {
+  IGNORE_CASE = true;
+  STATIC = false;
+}
+
+PARSER_BEGIN(test)
+/** Analizador de expresiones aritmeticas sencillas. */
+package Analizador; 
+public class test {
+}
+PARSER_END(test)
+
+/** Lexico */
+SKIP : {
+      " "
+    | "\t"
+    | "\r"
+    | "\n"
+}
+
+TOKEN : {
+      <NUMERO: (["0"-"9"])+>
+    | <COMA: ",">
+}
+/** Fin Lexico */
+
+/** Producción inicial 
+    Analizar -> (Exprecion)
+*/
+void Analizar() :
+{boolean a;}
+{
+  a=Exprecion(){
+        if(a){
+            System.out.println("La cadena ingresada esta ordenada ascendentemente");
+        }
+        else{
+            System.out.println("La cadena ingresada NO esta ordenada ascendentemente");
+        }
+    }
+}
+
+/** Exprecion ->Primitivo(',' Primitivo)*  */
+boolean Exprecion() :
+{int a, b; boolean c=true;}
+{
+    a=Primitivo()
+    (
+        <COMA> b=Primitivo(){c=((a<b)&&c); a=b;}
+    )*
+    {return c;}
+}
+
+/** Primitivo -> Numero
+*/
+
+int Primitivo() :
+{int e;}
+{
+    <NUMERO> {return Integer.parseInt(token.image);}
+}
